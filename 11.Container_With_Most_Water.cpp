@@ -2,6 +2,26 @@
 #include <vector>
 using namespace std;
 
+class Solution1
+{
+  public:
+    int maxArea(vector<int> &height)
+    {
+        int maxwater = 0;
+        int b = 0, e = height.size();
+        while (b < e)
+        {
+            int h = min(height[b], height[e]);
+            maxwater = max(h * (e - b), maxwater);
+            while (height[b] <= h && b < e)
+                ++b;
+            while (height[e] <= h && b < e)
+                --e;
+        }
+        return maxwater;
+    }
+};
+
 class Solution
 {
   public:
@@ -22,10 +42,4 @@ class Solution
     }
 };
 
-int main(int argc, char const *argv[])
-{
-    Solution a;
-    vector<int> b({1, 8, 6, 2, 5, 4, 8, 3, 7});
-    cout << a.maxArea(b);
-    return 0;
-}
+

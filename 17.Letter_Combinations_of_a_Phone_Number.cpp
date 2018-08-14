@@ -34,6 +34,7 @@ class Solution
         return result;
     }
 };
+
 void backtrack(vector<string> &res, string digits, vector<string> table, string local, int index);
 
 class Solution2
